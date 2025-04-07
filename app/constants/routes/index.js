@@ -1,6 +1,6 @@
 export const ROUTES = {
-    LOGIN: '/login',
-    SIGNUP: '/signup',
+    LOGIN: '/user/login',
+    SIGNUP: '/user/signup',
     // SPLASH SCREEN
     SPLASH: '/onboarding/SplashScreen',
     // ONBOARDING

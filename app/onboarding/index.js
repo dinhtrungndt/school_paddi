@@ -58,14 +58,14 @@ const OnboardingScreen = () => {
       flatListRef.current.scrollToIndex({ index: nextIndex, animated: true });
       setCurrentIndex(nextIndex);
     } else if (currentIndex === onboardingData.length - 1) {
-      router.replace(ROUTES.TABHOME);
+      router.replace(ROUTES.LOGIN);
     } else {
       handleSkip();
     }
   };
 
   const handleSkip = () => {
-    router.replace(ROUTES.TABHOME);
+    router.replace(ROUTES.LOGIN);
   };
 
   const renderItem = ({ item }) => {

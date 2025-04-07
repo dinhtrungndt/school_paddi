@@ -11,9 +11,9 @@ export default function Index() {
 
   if (hasSeen === null) return <ActivityIndicator size="small" color={COLORS.COLORS.PRIMARY} />
 
-  return ( 
+  return (
     <Provider store={store}>
-      <Redirect href={hasSeen ? ROUTES.TABHOME : ROUTES.SPLASH} /> 
+      <Redirect href={hasSeen ? ROUTES.TABHOME : ROUTES.SPLASH} />
     </Provider>
   )
 }
