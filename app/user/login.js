@@ -26,15 +26,16 @@ const LoginScreen = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleLogin = async () => {
-    if (!email || !password) {
-      Toast.show({
-        type: 'error',
-        text1: 'Please fill in all fields!',
-      });
-      return;
-    }
+    // if (!email || !password) {
+    //   Toast.show({
+    //     type: 'error',
+    //     text1: 'Please fill in all fields!',
+    //   });
+    //   return;
+    // }
 
     setIsLoading(true);
+    router.replace(ROUTES.TABHOME);
 
     try {
       setTimeout(() => {
