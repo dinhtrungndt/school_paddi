@@ -6,6 +6,6 @@ export const ROUTES = {
     // ONBOARDING
     ONBOARDING: '/onboarding',
     // HOME
-    TABHOME: '/(tabs)/home',
+    TABHOME: '/(tabs)',
     HOME: '/home',
   };
