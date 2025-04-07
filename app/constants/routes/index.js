@@ -8,5 +8,4 @@ export const ROUTES = {
     // HOME
     TABHOME: '/(tabs)/home',
     HOME: '/home',
-
   };
