@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import store from './stores/redux/store.js'
 import { ROUTES } from './constants/routes/index.js'
 import { COLORS } from './constants/ui/colors/colors.js'
+import TabLayout from './(tabs)/_layout.js';
 
 export default function Index() {
   const { hasSeen } = useOnboardingStatus()
@@ -12,8 +13,9 @@ export default function Index() {
   if (hasSeen === null) return <ActivityIndicator size="small" color={COLORS.COLORS.PRIMARY} />
 
   return (
-    <Provider store={store}>
-      <Redirect href={hasSeen ? ROUTES.TABHOME : ROUTES.SPLASH} />
-    </Provider>
+    // <Provider store={store}>
+    //   <Redirect href={hasSeen ? ROUTES.TABHOME : ROUTES.SPLASH} />
+    // </Provider>
+    <TabLayout  />
   )
 }
