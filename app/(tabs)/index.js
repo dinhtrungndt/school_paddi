@@ -1,7 +1,8 @@
-import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native'
-import { Entypo, EvilIcons, FontAwesome6, Ionicons, MaterialIcons } from '@expo/vector-icons'
+import { View, Text, Image, ScrollView, TouchableOpacity, FlatList } from 'react-native'
+import { Entypo, EvilIcons, FontAwesome, FontAwesome6, Ionicons, MaterialIcons } from '@expo/vector-icons'
 import { TEXT_TITLE_INTER } from '../constants/ui/fonts/text'
 import { CircularProgress } from 'react-native-circular-progress'
+import { dataHomeWorks } from '../stores/data/home'
 
 export default function HomeScreen() {
   return (
@@ -12,7 +13,7 @@ export default function HomeScreen() {
         <Ionicons name="notifications" size={24} color="black" />
       </View>
       {/* body */}
-      <View>
+      <ScrollView style={{ backgroundColor: '#FFFFFF', height: '100%' }} showsVerticalScrollIndicator={false}>
         {/* center */}
         <Text style={{ ...TEXT_TITLE_INTER, marginTop: 20, paddingLeft: 16, color: 'black' }}>Hi there, Welcome!</Text>
         {/* frame Elina */}
@@ -64,30 +65,33 @@ export default function HomeScreen() {
           </ScrollView>
         </View>
         {/* list Homeworks */}
-        <View>
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: 16}}>
-            <Text style={{ color: 'black', fontSize: 18, fontWeight: '500', fontFamily: 'Inter', paddingTop: 4 }}>Homeworks</Text>
-            <TouchableOpacity>
-              <Text style={{ color: '#8C4AF2B2', fontSize: 16, fontWeight: '500', fontFamily: 'Poppins', paddingTop: 4 }}>View all</Text>
-            </TouchableOpacity>
-          </View>
-          <View>
-            <View style={{ backgroundColor: '#008F99', padding: 16, borderRadius: 8, width: 268}}>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: 16 }}>
+          <Text style={{ color: 'black', fontSize: 18, fontWeight: '500', fontFamily: 'Inter', paddingTop: 4 }}>Homeworks</Text>
+          <TouchableOpacity>
+            <Text style={{ color: '#8C4AF2B2', fontSize: 16, fontWeight: '500', fontFamily: 'Poppins', paddingTop: 4 }}>View all</Text>
+          </TouchableOpacity>
+        </View>
+        <FlatList
+          data={dataHomeWorks}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          renderItem={({ item }) => (
+            <View style={{ backgroundColor: '#008F99', padding: 16, borderRadius: 8, width: 268, marginLeft: 16, marginBottom: 16, shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.25, shadowRadius: 3.84, elevation: 2.5 }}>
               <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                   <MaterialIcons name="menu-book" size={30} color="#FFFFFF" />
                   <View style={{ paddingLeft: 8 }}>
-                    <Text style={{ color: '#FFFFFF', fontSize: 12, fontWeight: '500' }}>Maths</Text>
+                    <Text style={{ color: '#FFFFFF', fontSize: 12, fontWeight: '500' }}>{item.name}</Text>
                     <View style={{ flexDirection: 'row', alignItems: 'center', paddingTop: 4 }}>
                       <EvilIcons name="clock" size={16} color="#FFFFFF" />
-                      <Text style={{ color: '#FFFFFF', fontSize: 10 }}>1 day left</Text>
+                      <Text style={{ color: '#FFFFFF', fontSize: 10 }}>{item.daysLeft} day left</Text>
                     </View>
                   </View>
                 </View>
                 <CircularProgress
                   size={45}
                   width={5.5}
-                  fill={65}
+                  fill={item.percentComplete}
                   tintColor="#CCE9EB"
                   backgroundColor="#FFFFFF"
                 >
@@ -99,15 +103,27 @@ export default function HomeScreen() {
                 </CircularProgress>
               </View>
               <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingTop: 16 }}>
-                <Text style={{ color: '#FFFFFF', fontSize: 12, fontWeight: '500', fontFamily: 'Inter', width: 120 }}>Solve the Given problems</Text>
+                <Text style={{ color: '#FFFFFF', fontSize: 12, fontWeight: '500', fontFamily: 'Inter', width: 120 }}>{item.problems}</Text>
                 <TouchableOpacity style={{ backgroundColor: '#FFFFFF', borderRadius: 4, padding: 6, paddingHorizontal: 16 }}>
                   <Text style={{ color: '#008F99', fontSize: 12, fontWeight: '500', fontFamily: 'Inter' }}>continue</Text>
                 </TouchableOpacity>
               </View>
             </View>
-          </View>
+          )}
+          keyExtractor={item => item.id.toString()}
+        />
+        {/* Event updates */}
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: 16 }}>
+          <Text style={{ color: 'black', fontSize: 18, fontWeight: '500', fontFamily: 'Inter', paddingTop: 4 }}>Event Updates</Text>
         </View>
-      </View>
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: 16, backgroundColor: '#FDE9D2', borderRadius: 8, marginBottom: 16, marginLeft: 16, marginRight: 16, paddingVertical: 12 }}>
+          <View>
+            <Text style={{ fontSize: 12, color: 'black', fontFamily: 'Inter', fontWeight: '500' }}>30 April 2024 | Saturday</Text>
+            <Text style={{ fontSize: 16, color: 'black', fontFamily: 'Inter', fontWeight: '600', paddingTop: 12 }}>Student Teachers Meeting </Text>
+          </View>
+          <FontAwesome name="calendar" size={24} color="#8C4AF2" />
+        </View>
+      </ScrollView>
     </View>
   )
 }
