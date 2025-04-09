@@ -16,7 +16,6 @@ export default function Index() {
     // <Provider store={store}>
     //   <Redirect href={hasSeen ? ROUTES.TABHOME : ROUTES.SPLASH} />
     // </Provider>
-    <TabLayout>
-    </TabLayout>
+    <TabLayout />
   )
 }
