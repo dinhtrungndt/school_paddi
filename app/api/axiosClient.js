@@ -5,6 +5,7 @@ const AxiosClient = (contentType = 'application/json') => {
   const axiosClient = axios.create({
     // baseURL: 'https://api.dinhtrungndt.id.vn/',
     baseURL: 'http://172.16.10.103:8080/', // home (T)
+    baseURL: 'http://172.16.10.103:8080/', 
   });
 
   axiosClient.interceptors.request.use(
