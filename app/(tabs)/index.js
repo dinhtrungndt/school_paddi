@@ -1,16 +1,21 @@
-import { View, Text, Image, ScrollView, TouchableOpacity, FlatList } from 'react-native'
+import { View, Text, Image, ScrollView, TouchableOpacity, FlatList, SafeAreaView } from 'react-native'
 import { Entypo, EvilIcons, FontAwesome, FontAwesome6, Ionicons, MaterialIcons } from '@expo/vector-icons'
 import { TEXT_TITLE_INTER } from '../constants/ui/fonts/text'
 import { CircularProgress } from 'react-native-circular-progress'
 import { dataHomeWorks } from '../stores/data/home'
+import { ROUTES } from '../constants/routes'
+import { router } from 'expo-router'
 
 export default function HomeScreen() {
+
   return (
-    <View>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#FFFFFF' }}>
       {/* header */}
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding: 16 }}>
         <Entypo name="menu" size={24} color="black" />
-        <Ionicons name="notifications" size={24} color="black" />
+        <TouchableOpacity onPress={() => router.push(ROUTES.NOTIFICATIONS)}>
+          <Ionicons name="notifications" size={24} color="black" />
+        </TouchableOpacity>
       </View>
       {/* body */}
       <ScrollView style={{ backgroundColor: '#FFFFFF', height: '100%' }} showsVerticalScrollIndicator={false}>
@@ -124,6 +129,6 @@ export default function HomeScreen() {
           <FontAwesome name="calendar" size={24} color="#8C4AF2" />
         </View>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   )
 }
