@@ -8,5 +8,5 @@ export const ROUTES = {
   // HOME
   TABHOME: '/(tabs)',
   HOME: '/home',
-  NOTIFICATIONS: '/components/home/Notifications/notifications',
+  NOTIFICATIONS: '/components/home/Notifications/notifi',
 };
