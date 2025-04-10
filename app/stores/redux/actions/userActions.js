@@ -1,10 +1,9 @@
 import { FETCH_USERS, FETCH_USERS_ERROR } from './types';
 import axiosClient from '../../../api/axiosClient';
 
-// Fetch all users
-export const fetchUsers = () => async (dispatch) => {
+const fetchUsers = () => async (dispatch) => {
   try {
-    
+
     dispatch({
       type: FETCH_USERS,
       payload: response.data,
@@ -16,3 +15,5 @@ export const fetchUsers = () => async (dispatch) => {
     });
   }
 };
+
+export default fetchUsers;

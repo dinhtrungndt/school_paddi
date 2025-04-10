@@ -6,11 +6,21 @@ import store from './stores/redux/store.js'
 import { ROUTES } from './constants/routes/index.js'
 import { COLORS } from './constants/ui/colors/colors.js'
 import TabLayout from './(tabs)/_layout.js';
+import { useFonts } from 'expo-font';
 
 export default function Index() {
   const { hasSeen } = useOnboardingStatus()
 
   if (hasSeen === null) return <ActivityIndicator size="small" color={COLORS.COLORS.PRIMARY} />
+
+  const [fontsLoaded] = useFonts({
+    'Inter': require('./assets/fonts/Inter.ttf'),
+    'Poppins': require('./assets/fonts/Poppins.ttf'),
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
 
   return (
     // <Provider store={store}>

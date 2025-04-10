@@ -13,7 +13,7 @@ const BackIcon = ({ onPress, size = 24, color = "black", style = {} }) => {
     };
 
     return (
-        <TouchableOpacity onPress={handlePress} style={{ padding: 16, ...style }}>
+        <TouchableOpacity onPress={handlePress}>
             <Ionicons name="caret-back" size={size} color={color} />
         </TouchableOpacity>
     );
